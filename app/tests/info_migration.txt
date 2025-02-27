@@ -1,6 +1,0 @@
-**Migration Setup:**
-
-# Run the following commands in terminal:
-#   flask db init       (initialize migrations folder)
-#   flask db migrate    (generate migration script)
-#   flask db upgrade    (apply migration to database)
