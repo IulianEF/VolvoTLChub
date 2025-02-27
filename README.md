@@ -7,7 +7,6 @@ Flask-Login (for authentication and session management)
 SQLAlchemy and Flask-SQLAlchemy (ORM for database interactions)
 SQLite (for local development database)
 Pandas & Numpy (basic data handling for reports)
-pdfkit / wkhtmltopdf (optional, for exporting PDF reports)
 Jinja2 (template engine for rendering HTML)
 Project Goal
 Provide a comprehensive vehicle service management system for Volvo customers, enabling:
