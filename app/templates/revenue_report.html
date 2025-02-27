@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Revenue Report</h2>
+
+<h4>Total Revenue: ${{ total_revenue }}</h4>
+<hr>
+
+<h5>Cost by Repair Status</h5>
+<ul>
+  {% for status, cost_sum in group_status.items() %}
+    <li><strong>{{ status }}:</strong> ${{ cost_sum }}</li>
+  {% endfor %}
+</ul>
+
+<p>More advanced reporting with Pandas can be added as needed.</p>
+{% endblock %}

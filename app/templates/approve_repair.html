@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Approve Repair</h2>
+<table class="table table-striped">
+  <thead>
+    <tr><th>Repair ID</th><th>Client</th><th>Scheduled Date</th><th>Status</th><th>Action</th></tr>
+  </thead>
+  <tbody>
+    {% for repair in repairs %}
+    <tr>
+      <td>{{ repair.id }}</td>
+      <td>{{ repair.client.name }}</td>
+      <td>{{ repair.scheduled_date.strftime('%Y-%m-%d') }}</td>
+      <td>{{ repair.status }}</td>
+      <td>
+        <form method="post" action="/approve_repair/{{ repair.id }}">
+          <button class="btn btn-success">Approve</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

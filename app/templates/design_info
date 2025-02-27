@@ -1,0 +1,16 @@
+🚘 Volvo color palette (signature dark blue and white).
+🌟 Hero section with a Volvo vehicle background.
+📝 Modern typography and minimalistic layout.
+⚡ Navigation bar fixed with correct Login/Register links.
+🏁 Branded footer with a Volvo-like slogan.
+
+
+
+🌑 Dark overlay added to the hero background for better contrast.
+✨ Text shadow applied to improve readability.
+🔠 Increased font size and weight for key hero text.
+
+
+📏 Logo resized to a height of 30px for a balanced appearance.
+🔄 Horizontal alignment with the title using display: flex; align-items: center;.
+✨ Added spacing between the logo and text for a clean look.

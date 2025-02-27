@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Assign Mechanic to Repair #{{ repair.id }}</h2>
+<p>Description: {{ repair.description }}</p>
+<p>Status: {{ repair.status }}</p>
+<p>Scheduled Date: {{ repair.scheduled_date.strftime("%Y-%m-%d") }}</p>
+
+<form method="POST">
+  <div class="mb-3">
+    <label>Select Mechanic:</label>
+    <select name="mechanic_id" class="form-select">
+      {% for m in mechanics %}
+      <option value="{{ m.id }}">{{ m.name }} ({{ m.email }})</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button class="btn btn-primary" type="submit">Assign</button>
+</form>
+{% endblock %}

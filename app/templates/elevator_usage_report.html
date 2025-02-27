@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Elevator Usage Report</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr><th>Elevator ID</th><th>Usage Count</th></tr>
+  </thead>
+  <tbody>
+    {% for record in report %}
+    <tr>
+      <td>{{ record.elevator_id }}</td>
+      <td>{{ record.usage_count }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

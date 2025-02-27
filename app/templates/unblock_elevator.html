@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Unblock Elevator</h2>
+<p>Select an elevator to set it back to 'Available'.</p>
+
+{% if elevators %}
+<form method="POST">
+  <div class="mb-3">
+    <label for="elevator_id">Elevator:</label>
+    <select name="elevator_id" class="form-select">
+      {% for e in elevators %}
+      <option value="{{ e.id }}">{{ e.type }} - Currently: {{ e.status }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button class="btn btn-success" type="submit">Unblock</button>
+</form>
+{% else %}
+<p>No elevators are blocked or occupied right now.</p>
+{% endif %}
+{% endblock %}

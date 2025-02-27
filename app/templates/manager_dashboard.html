@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Manager Dashboard</h2>
+<p>Welcome, {{ current_user.name }}!</p>
+
+<ul>
+  <li><a href="{{ url_for('employee.manage_employee') }}">Manage Employees</a></li>
+  <li><a href="{{ url_for('employee.block_elevator') }}">Block Elevators</a></li>
+  <li><a href="/employee/unblock_elevator">Unblock Elevator</a></li>
+  <li><a href="{{ url_for('employee.revenue_report') }}">View Revenue Report</a></li>
+</ul>
+{% endblock %}

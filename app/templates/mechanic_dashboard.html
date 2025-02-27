@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Mechanic Dashboard</h2>
+<p>Welcome, {{ current_user.name }}. Here are your assigned repairs.</p>
+
+{% if repairs %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Repair ID</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Scheduled Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in repairs %}
+    <tr>
+      <td>{{ r.id }}</td>
+      <td>{{ r.description }}</td>
+      <td>{{ r.status }}</td>
+      <td>{{ r.scheduled_date.strftime('%Y-%m-%d') }}</td>
+      <td>
+        <!-- Mark Completed (POST) -->
+        {% if r.status != 'Completed' %}
+        <form method="POST" action="/employee/complete_repair/{{ r.id }}" style="display:inline;">
+          <button class="btn btn-success btn-sm" type="submit">Complete</button>
+        </form>
+        {% endif %}
+
+        <!-- Update Parts Used Link (GET) -->
+        <a class="btn btn-info btn-sm" href="/employee/update_parts_used/{{ r.id }}">
+          Update Parts
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No repairs assigned to you at the moment.</p>
+{% endif %}
+{% endblock %}

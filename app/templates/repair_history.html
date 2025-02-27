@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Repair History</h2>
+<table class="table table-hover">
+  <thead>
+    <tr><th>Repair ID</th><th>Status</th><th>Date</th><th>Cost</th></tr>
+  </thead>
+  <tbody>
+    {% for repair in repairs %}
+    <tr>
+      <td>{{ repair.id }}</td>
+      <td>{{ repair.status }}</td>
+      <td>{{ repair.scheduled_date.strftime('%Y-%m-%d') }}</td>
+      <td>${{ repair.cost }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

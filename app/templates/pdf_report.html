@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Revenue Report</title>
+  <style>
+    /* Basic styling for PDF:
+       Freed from the need for responsive design,
+       you can do a simple print layout here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    table, th, td {
+      border: 1px solid #888;
+      border-collapse: collapse;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Volvo TLC Hub - Revenue Report</h1>
+  <p><strong>Date Generated:</strong> {{ now.strftime("%Y-%m-%d %H:%M:%S") }}</p>
+
+  <h2>Total Revenue: ${{ total_revenue }}</h2>
+
+  <h3>Cost by Status</h3>
+  <ul>
+    {% for status, cost_sum in group_status.items() %}
+      <li><strong>{{ status }}:</strong> ${{ cost_sum }}</li>
+    {% endfor %}
+  </ul>
+
+  <hr/>
+
+  <h3>Repair Details</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Repair ID</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in repairs %}
+      <tr>
+        <td>{{ r.id }}</td>
+        <td>{{ r.scheduled_date.strftime("%Y-%m-%d") }}</td>
+        <td>{{ r.status }}</td>
+        <td>{{ r.cost }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Update Parts Used for Repair #{{ repair.id }}</h2>
+<p>Description: {{ repair.description }}</p>
+<p>Status: {{ repair.status }}</p>
+<p>Scheduled Date: {{ repair.scheduled_date.strftime('%Y-%m-%d') }}</p>
+
+<form method="POST">
+  <div class="mb-3">
+    <label>Parts Used (comma-separated or free text):</label>
+    <input type="text" name="parts_used" class="form-control"/>
+  </div>
+  <button class="btn btn-primary" type="submit">Save</button>
+</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+<!-- app/templates/login.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Login</h2>
+<form method="POST" action="{{ url_for('auth.login') }}">
+  <div class="mb-3">
+    <label>Email:</label>
+    <input type="text" name="email" class="form-control"/>
+  </div>
+  <div class="mb-3">
+    <label>Password:</label>
+    <input type="password" name="password" class="form-control"/>
+  </div>
+  <button type="submit" class="btn btn-success">Login</button>
+</form>
+{% endblock %}

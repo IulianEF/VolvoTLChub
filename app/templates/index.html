@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome to Volvo TLC Hub</h2>
+{% if repairs %}
+  <h3>Your Repair History</h3>
+  <ul>
+    {% for r in repairs %}
+      <li>{{ r.description }} on {{ r.scheduled_date.strftime("%Y-%m-%d") }} (Status: {{ r.status }})</li>
+    {% endfor %}
+  </ul>
+  <a href="/schedule_repair" class="btn btn-primary">Schedule a Repair</a>
+{% else %}
+  <p>If you're a client, <a href="/auth/login">log in</a> to see your repair history or schedule a new repair.</p>
+{% endif %}
+{% endblock %}

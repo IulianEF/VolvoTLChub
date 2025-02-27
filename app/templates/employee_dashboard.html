@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Employee Dashboard</h2>
+<p>Welcome, {{ current_user.name }} ({{ current_user.role }})</p>
+<ul>
+  <li><a href="/manage_employee">Manage Employees</a></li>
+  <li><a href="/revenue_report">Revenue Report</a></li>
+  <li><a href="/elevator_usage_report">Elevator Usage Report</a></li>
+</ul>
+{% endblock %}

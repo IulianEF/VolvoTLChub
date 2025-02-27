@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Billing History</h2>
+<table class="table table-hover">
+  <thead>
+    <tr><th>Repair ID</th><th>Cost</th><th>Billing Details</th><th>Completion Date</th></tr>
+  </thead>
+  <tbody>
+    {% for repair in repairs %}
+    <tr>
+      <td>{{ repair.id }}</td>
+      <td>${{ repair.cost }}</td>
+      <td>{{ repair.billing_details }}</td>
+      <td>{{ repair.completion_date.strftime('%Y-%m-%d') if repair.completion_date else 'Pending' }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

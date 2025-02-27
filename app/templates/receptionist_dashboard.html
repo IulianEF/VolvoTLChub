@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Receptionist Dashboard</h2>
+<p>Welcome, {{ current_user.name }}! Below are pending repairs that need your attention.</p>
+
+{% if repairs %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Repair ID</th>
+      <th>Client ID</th>
+      <th>Description</th>
+      <th>Scheduled Date</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in repairs %}
+    <tr>
+      <td>{{ r.id }}</td>
+      <td>{{ r.client_id }}</td>
+      <td>{{ r.description }}</td>
+      <td>{{ r.scheduled_date.strftime("%Y-%m-%d") }}</td>
+      <td>{{ r.status }}</td>
+      <td>
+        <!-- Approve button (POST) -->
+        <form method="POST" action="/employee/approve_repair/{{ r.id }}" style="display:inline;">
+          <button class="btn btn-success btn-sm" type="submit">Approve</button>
+        </form>
+
+        <!-- Possibly in each row of the table: -->
+        <a class="btn btn-info btn-sm" href="/employee/assign_mechanic/{{ r.id }}">Assign Mechanic</a>
+
+        <!-- Reschedule link (GET) -->
+        <a href="/employee/reschedule_repair/{{ r.id }}" class="btn btn-warning btn-sm">Reschedule</a>
+
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No repairs are pending approval at this time.</p>
+{% endif %}
+{% endblock %}

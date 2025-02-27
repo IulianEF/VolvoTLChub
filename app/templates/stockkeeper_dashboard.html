@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>StockKeeper Dashboard</h2>
+<p>Welcome, {{ current_user.name }}! Below is an overview of all consumables.</p>
+
+<!-- Link to check stock alerts -->
+<a class="btn btn-warning mb-3" href="/employee/check_stock">Check Low Stock</a>
+<!-- Optional: mass replenish -->
+<form method="POST" action="/employee/mass_replenish" style="display:inline;">
+  <button type="submit" class="btn btn-danger mb-3">Mass Replenish</button>
+</form>
+
+{% if consumables %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Threshold</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in consumables %}
+    <tr>
+      <td>{{ c.id }}</td>
+      <td>{{ c.name }}</td>
+      <td>{{ c.quantity }}</td>
+      <td>{{ c.threshold }}</td>
+      <td>
+        <!-- Replenish form (POST) -->
+        <form method="POST" action="/employee/replenish_stock/{{ c.id }}" style="display:inline;">
+          <input type="number" name="reorder_amount" placeholder="Add units" min="1" class="form-control-sm"/>
+          <button type="submit" class="btn btn-primary btn-sm">Replenish</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No consumables found in the database.</p>
+{% endif %}
+{% endblock %}

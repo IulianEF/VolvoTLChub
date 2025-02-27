@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Replenish Stock</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr><th>Consumable</th><th>Quantity</th><th>Threshold</th><th>Action</th></tr>
+  </thead>
+  <tbody>
+    {% for item in low_stock_items %}
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.threshold }}</td>
+      <td>
+        <form method="post" action="/replenish_stock/{{ item.id }}">
+          <button class="btn btn-warning">Replenish</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
